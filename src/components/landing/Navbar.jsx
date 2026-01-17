@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, LogIn, UserPlus } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { Menu, X, UserPlus } from 'lucide-react';
 import logoIcon from '../../assets/logo-icon.png';
 import { useChat } from '../../contexts/ChatContext';
 
@@ -8,7 +7,6 @@ const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const { closeChat } = useChat();
-    const navigate = useNavigate();
 
     useEffect(() => {
         let ticking = false;
@@ -85,26 +83,13 @@ const Navbar = () => {
                             About
                         </a>
                         
-                        <div className="flex items-center gap-3">
-                            <button
-                                onClick={() => navigate('/auth/login')}
-                                className={`flex items-center gap-2 px-4 py-2 rounded-lg border transition-colors ${
-                                    isScrolled 
-                                        ? 'border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-primary hover:text-primary' 
-                                        : 'border-white/30 text-white hover:bg-white/10'
-                                }`}
-                            >
-                                <LogIn size={18} />
-                                Log In
-                            </button>
-                            <button
-                                onClick={() => navigate('/auth/signup')}
-                                className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
-                            >
-                                <UserPlus size={18} />
-                                Sign Up
-                            </button>
-                        </div>
+                        <button
+                            disabled
+                            className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg opacity-60 cursor-not-allowed transition-colors"
+                        >
+                            <UserPlus size={18} />
+                            Coming Soon
+                        </button>
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -150,26 +135,13 @@ const Navbar = () => {
                         >
                             About
                         </a>
-                        <div className="pt-3 border-t border-gray-200 dark:border-gray-700 space-y-2">
+                        <div className="pt-3 border-t border-gray-200 dark:border-gray-700">
                             <button
-                                onClick={() => {
-                                    handleNavClick();
-                                    navigate('/auth/login');
-                                }}
-                                className="w-full flex items-center justify-center gap-2 px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:border-primary hover:text-primary transition-colors"
-                            >
-                                <LogIn size={18} />
-                                Log In
-                            </button>
-                            <button
-                                onClick={() => {
-                                    handleNavClick();
-                                    navigate('/auth/signup');
-                                }}
-                                className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
+                                disabled
+                                className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-primary text-white rounded-lg opacity-60 cursor-not-allowed transition-colors"
                             >
                                 <UserPlus size={18} />
-                                Sign Up
+                                Coming Soon
                             </button>
                         </div>
                     </div>
