@@ -30,3 +30,12 @@ npm run build
 - `src/hooks/` - Custom hooks (useParallax, useWaitlist, useLiveChat)
 - `src/lib/supabase.js` - Supabase client (for newsletter)
 - `src/components/ui/` - Shared UI components
+
+## Deployment
+
+This project is configured for Vercel deployment. See `VERCEL_CONFIG.md` for details.
+
+## Documentation
+
+- `IMPORT_PATHS_FIXED.md` - Import path structure documentation
+- `VERCEL_CONFIG.md` - Vercel deployment configuration
