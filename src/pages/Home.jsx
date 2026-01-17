@@ -1,5 +1,4 @@
 import React from 'react';
-import { ChatProvider } from '../contexts/ChatContext';
 import Navbar from '../components/landing/Navbar';
 import Hero from '../components/landing/Hero';
 import BigPromise from '../components/landing/BigPromise';
@@ -17,8 +16,7 @@ import ChatWidget from '../components/landing/LiveChat/ChatWidget';
 
 const Home = () => {
     return (
-        <ChatProvider>
-            <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+        <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
                 <Navbar />
                 <Hero />
                 <BigPromise />
@@ -34,7 +32,6 @@ const Home = () => {
                 <Footer />
                 <ChatWidget />
             </div>
-        </ChatProvider>
     );
 };
 
