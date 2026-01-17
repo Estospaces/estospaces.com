@@ -61,7 +61,7 @@ const Toast = ({ id, message, title, type = 'success', isVisible, onClose, durat
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -20, scale: 0.95 }}
                     transition={{ duration: 0.2 }}
-                    className={`relative ${currentStyle.bg} ${currentStyle.border} border-2 text-white rounded-xl shadow-2xl flex items-start gap-3 min-w-[320px] max-w-[420px] p-4`}
+                    className={`fixed ${positionClass} z-[100] ${currentStyle.bg} ${currentStyle.border} border-2 text-white rounded-xl shadow-2xl flex items-start gap-3 min-w-[320px] max-w-[420px] p-4`}
                 >
                     <Icon className={`${currentStyle.iconColor} flex-shrink-0 mt-0.5`} size={22} />
                     <div className="flex-1 min-w-0">

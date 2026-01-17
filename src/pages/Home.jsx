@@ -30,7 +30,7 @@ const Home = () => {
                 <FAQ />
                 <FinalCTA />
                 <Footer />
-                <ChatWidget />
+                {/* <ChatWidget /> */}
             </div>
     );
 };

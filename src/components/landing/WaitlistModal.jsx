@@ -58,22 +58,22 @@ const WaitlistModal = ({ isOpen, onClose }) => {
         const result = await submitToWaitlist(formData);
 
         if (result.success) {
-            // Show success toast
-            showToast('🎉 Welcome to Estospaces! You\'ve successfully joined our waitlist.', 'success');
+            // Reset form and close modal immediately
+            setFormData({
+                userType: '',
+                name: '',
+                email: '',
+                phone: '',
+                location: '',
+                lookingFor: '',
+            });
+            setErrors({});
+            onClose();
             
-            // Reset form and close modal after 2 seconds
+            // Show success toast after modal closes
             setTimeout(() => {
-                setFormData({
-                    userType: '',
-                    name: '',
-                    email: '',
-                    phone: '',
-                    location: '',
-                    lookingFor: '',
-                });
-                setErrors({});
-                onClose();
-            }, 2000);
+                showToast('🎉 Welcome to Estospaces! You\'ve successfully joined our waitlist.', 'success');
+            }, 300);
         } else if (result.error) {
             // Show error toast
             showToast(result.error, 'error');
@@ -97,6 +97,7 @@ const WaitlistModal = ({ isOpen, onClose }) => {
                 isVisible={toast.isVisible}
                 onClose={hideToast}
                 duration={5000}
+                position="bottom-right"
             />
 
             <AnimatePresence>
