@@ -39,3 +39,8 @@ This project is configured for Vercel deployment. See `VERCEL_CONFIG.md` for det
 
 - `IMPORT_PATHS_FIXED.md` - Import path structure documentation
 - `VERCEL_CONFIG.md` - Vercel deployment configuration
+- `EMAIL_SETUP.md` - Email configuration for reservation form
+
+## Reservation Form
+
+The "Reserve Your Spot" form sends emails to `contact@estospaces.com` instead of saving to Supabase. See `EMAIL_SETUP.md` for email service configuration.
