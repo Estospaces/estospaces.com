@@ -21,31 +21,57 @@ const Footer = () => {
         setError('');
 
         try {
-            // Check if Supabase is configured
-            if (!supabase) {
-                throw new Error('Newsletter feature is not configured yet.');
-            }
+            const subscriberEmail = email.trim().toLowerCase();
+            
+            // Try to save to Supabase if configured
+            if (supabase) {
+                try {
+                    const { error: supabaseError } = await supabase
+                        .from('newsletter_subscribers')
+                        .insert([
+                            {
+                                email: subscriberEmail,
+                                subscribed_at: new Date().toISOString(),
+                                source: 'footer'
+                            }
+                        ]);
 
-            // Insert email into newsletter_subscribers table
-            const { error: supabaseError } = await supabase
-                .from('newsletter_subscribers')
-                .insert([
-                    {
-                        email: email.trim().toLowerCase(),
-                        subscribed_at: new Date().toISOString(),
-                        source: 'footer'
+                    if (supabaseError) {
+                        // Check for duplicate email
+                        if (supabaseError.code === '23505') {
+                            throw new Error('This email is already subscribed!');
+                        }
+                        console.warn('[Newsletter] Supabase save failed:', supabaseError);
+                    } else {
+                        console.log('[Newsletter] Email saved to Supabase:', subscriberEmail);
                     }
-                ]);
-
-            if (supabaseError) {
-                // Check for duplicate email
-                if (supabaseError.code === '23505') {
-                    throw new Error('This email is already subscribed!');
+                } catch (dbErr) {
+                    // If it's a duplicate error, rethrow it
+                    if (dbErr.message?.includes('already subscribed')) {
+                        throw dbErr;
+                    }
+                    console.warn('[Newsletter] Supabase not available:', dbErr);
                 }
-                throw supabaseError;
             }
 
-            console.log('Email saved to Supabase:', email);
+            // Send email notification about new subscriber (works regardless of Supabase)
+            const response = await fetch('/api/send-newsletter-notification', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    email: subscriberEmail,
+                    source: 'footer'
+                })
+            });
+            
+            const result = await response.json();
+            console.log('[Newsletter] Notification response:', result);
+            
+            if (!response.ok && response.status === 404) {
+                // API not available - show helpful message
+                throw new Error('Newsletter service is temporarily unavailable. Please try again later.');
+            }
+
             setSubmitted(true);
             setEmail('');
 

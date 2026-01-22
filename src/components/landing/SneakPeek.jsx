@@ -68,7 +68,7 @@ const SneakPeek = () => {
                             onClick={() => setIsModalOpen(true)}
                             className="relative bg-gradient-to-r from-primary to-orange-600 text-white px-12 py-5 rounded-full font-bold text-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center gap-3 mx-auto transform group-hover:scale-105 border border-white/20"
                         >
-                            Join the Waitlist
+                            Reserve Your Spot
                             <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
                         </button>
                     </div>

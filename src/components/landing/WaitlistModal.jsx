@@ -72,7 +72,7 @@ const WaitlistModal = ({ isOpen, onClose }) => {
             
             // Show success toast after modal closes
             setTimeout(() => {
-                showToast('🎉 Welcome to Estospaces! You\'ve successfully joined our waitlist.', 'success');
+                showToast('🎉 Thank you! Your spot has been reserved. We\'ll be in touch soon!', 'success');
             }, 300);
         } else if (result.error) {
             // Show error toast
@@ -136,7 +136,7 @@ const WaitlistModal = ({ isOpen, onClose }) => {
                             {/* Header */}
                             <div className="text-center mb-6">
                                 <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-3 font-serif">
-                                    Join the <span className="text-primary">Waitlist</span>
+                                    Reserve Your <span className="text-primary">Spot</span>
                                 </h2>
                                 <p className="text-gray-600 dark:text-gray-300 text-sm">
                                     Be among the first to experience the future of real estate
@@ -302,7 +302,7 @@ const WaitlistModal = ({ isOpen, onClose }) => {
                                         : 'bg-gradient-to-r from-primary to-orange-600 text-white hover:shadow-xl transform hover:scale-[1.02]'
                                         }`}
                                 >
-                                    {loading ? 'Joining...' : success ? 'Joined!' : 'Reserve Your Spot'}
+                                    {loading ? 'Reserving...' : success ? 'Reserved!' : 'Reserve Your Spot'}
                                 </button>
                             </form>
                         </div>

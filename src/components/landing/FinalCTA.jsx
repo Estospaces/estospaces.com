@@ -34,7 +34,7 @@ const FinalCTA = () => {
 
                     {/* Subheadline */}
                     <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-                        Join the waitlist and be part of the virtual-first revolution in property discovery.
+                        Reserve your spot and be part of the virtual-first revolution in property discovery.
                     </p>
 
                     {/* Benefits Pills */}
@@ -50,14 +50,14 @@ const FinalCTA = () => {
                         ))}
                     </div>
 
-                    {/* Join Waitlist Button */}
+                    {/* Reserve Your Spot Button */}
                     <div className="max-w-2xl mx-auto mb-10">
                         <button
                             onClick={handleOpenModal}
                             type="button"
                             className="w-full bg-gradient-to-r from-primary to-orange-600 text-white px-10 py-5 rounded-full font-bold text-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center gap-3 transform hover:scale-105"
                         >
-                            Join Waitlist
+                            Reserve Your Spot
                             <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
                         </button>
                     </div>
